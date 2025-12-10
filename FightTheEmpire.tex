@@ -1,0 +1,421 @@
+\documentclass{article}
+\usepackage[margin=0.25in]{geometry}
+\usepackage{pdflscape}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes.geometric}
+
+% Define custom colors
+\definecolor{darkblue}{RGB}{25,25,112}
+\definecolor{lightblue}{RGB}{173,216,230}
+\definecolor{darkred}{RGB}{139,0,0}
+\definecolor{darkgreen}{RGB}{0,100,0}
+\definecolor{purple}{RGB}{128,0,128}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{landscape}
+
+\begin{center}
+{\Huge\bfseries\color{darkblue} FIGHT THE EMPIRE}\\[0.5cm]
+{\Large\itshape A Choose Your Own Adventure Decision Tree}
+\end{center}
+
+\vspace{1cm}
+
+\resizebox{1.3\textwidth}{!}{
+\begin{tikzpicture}[
+    % Node styles
+    start/.style={circle, draw=darkblue, fill=lightblue!30, minimum size=16mm, very thick, font=\bfseries},
+    page/.style={circle, draw=darkblue, minimum size=10mm, thick, font=\Large},
+    success/.style={circle, draw=darkgreen, fill=green!20, minimum size=12mm, very thick, font=\bfseries},
+    failure/.style={circle, draw=darkred, fill=red!20, minimum size=12mm, very thick, font=\bfseries},
+    repeat/.style={diamond, draw=purple, fill=purple!20, minimum size=10mm, thick, font=\scriptsize},
+    % Edge styles
+    edge/.style={draw=darkblue, thick, ->}
+]
+
+% Level 0 - Start
+\node[start] (start) at (0,0) {\shortstack{START\\p.2}};
+
+% Level 1
+\node[page] (p4) at (-8,-1) {p.4};
+\node[page] (p7) at (14,-1) {p.7};
+
+% Level 2 - Left branch from p.4
+\node[page] (p10) at (-12,-2) {p.10};
+\node[page] (p15) at (-4,-2) {p.15};
+
+% Level 2 - Right branch from p.7
+\node[page] (p12) at (10,-2) {p.12};
+\node[page] (p23) at (16,-2) {p.23};
+
+% Level 3 - From p.10
+\node[page] (p60) at (-14,-4) {p.60};
+\node[page] (p74) at (-12,-4) {p.74};
+
+% Level 3 - From p.15
+\node[page] (p19) at (-6,-4) {p.19};
+\node[page] (p33) at (-2,-4) {p.33};
+
+% Level 3 - From p.12
+\node[page] (p52) at (8,-4) {p.52};
+\node[page] (p64) at (12,-4) {p.64};
+
+% Level 3 - From p.23
+\node[page] (p37) at (14,-4) {p.37};
+\node[page] (p42) at (18,-4) {p.42};
+
+% Level 4 - From p.60
+\node[failure] (x1) at (-16,-6) {\Large X};
+
+% Level 4 - From p.74
+\node[page] (p69) at (-14,-6) {p.69};
+\node[page] (p72) at (-12,-6) {p.72};
+
+% Level 4 - From p.19
+\node[page] (p35) at (-8,-6) {p.35};
+\node[page] (p76) at (-6,-6) {p.76};
+
+% Level 4 - From p.33
+\node[page] (p40) at (-3,-6) {p.40};
+\node[page] (p49) at (0,-6) {p.49};
+
+% Level 4 - From p.52
+\node[page] (p26) at (6,-6) {p.26};
+\node[page] (p32) at (10,-6) {p.32};
+
+% Level 4 - From p.64
+\node[failure] (x4) at (12,-6) {\Large X};
+
+% Level 4 - From p.37
+\node[failure] (x37) at (14,-6) {\Large X};
+
+% Level 5 - From p.35
+\node[page] (p55) at (-10,-8) {p.55};
+\node[page] (p83) at (-8,-8) {p.83};
+
+% Level 5 - From p.76
+\node[success] (win33) at (-6,-8) {\Large $\checkmark$};
+
+% Level 5 - From p.72
+\node[failure] (x2) at (-12,-8) {\Large X};
+
+% Level 5 - From p.69
+\node[page] (p45) at (-16,-8) {p.45};
+\node[page] (p97) at (-14,-8) {p.97};
+
+% Level 5 - From p.40
+\node[failure] (miss41) at (-3,-8) {\Large X};
+
+% Level 5 - From p.49
+\node[page] (p17) at (0,-8) {p.17};
+\node[page] (p53) at (3,-8) {p.53};
+
+% Level 5 - From p.26
+\node[failure] (x11) at (6,-8) {\Large X};
+
+% Level 5 - From p.32
+\node[page] (p29) at (8,-8) {p.29};
+\node[page] (p102) at (10,-8) {p.102};
+
+
+% Level 6 - From p.45
+\node[page] (p66) at (-19,-10) {p.66};
+\node[page] (p101) at (-17,-10) {p.101};
+
+% Level 6 - From p.97
+\node[page] (p86) at (-15,-10) {p.86};
+\node[page] (p107) at (-13,-10) {p.107};
+
+% Level 6 - From p.55
+\node[failure] (x40) at (-9,-10) {\Large X};
+
+% Level 6 - From p.17
+\node[page] (p91) at (-1,-10) {p.91};
+\node[page] (p100) at (1,-10) {p.100};
+
+% Level 6 - From p.53
+\node[failure] (x6) at (3,-10) {\Large X};
+
+% Level 6 - From p.29
+\node[page] (p81) at (5,-10) {p.81};
+\node[page] (p90) at (7,-10) {p.90};
+
+% Level 6 - From p.102
+\node[page] (p96) at (9,-10) {p.96};
+\node[page] (p109) at (11,-10) {p.109};
+
+% Level 7 - From p.86
+\node[failure] (x22) at (-15,-12) {\Large X};
+
+% Level 7 - From p.107
+\node[page] (p85) at (-13,-12) {p.85};
+\node[page] (p116) at (-9,-12) {p.116};
+
+% Level 7 - From p.91
+\node[page] (p88) at (-5,-10) {p.88};
+\node[page] (p110) at (-1,-12) {p.110};
+
+% Level 7 - From p.100
+\node[failure] (x45) at (1,-12) {\Large X};
+
+% Level 7 - From p.81
+\node[failure] (x81) at (5,-14) {\Large X};
+
+% Level 7 - From p.96
+\node[success] (win96) at (9,-12) {\Large $\checkmark$};
+
+% Level 7 - From p.109
+\node[failure] (x109) at (11,-12) {\Large X};
+
+% Level 7 - From p.66
+\node[page] (p5) at (-22,-12) {p.5};
+\node[page] (p14) at (-20,-12) {p.14};
+
+% Level 7 - From p.101
+\node[success] (win32) at (-17,-12) {\Large $\checkmark$};
+
+% Level 8 - From p.5
+\node[page] (p28) at (-24,-14) {p.28};
+\node[page] (p43) at (-22,-14) {p.43};
+
+% Level 8 - From p.14
+\node[page] (p77) at (-20,-14) {p.77};
+\node[page] (p104) at (-18,-14) {p.104};
+
+% Level 8 - From p.85
+\node[failure] (x23) at (-13,-14) {\Large X};
+
+% Level 8 - From p.116
+\node[success] (win5) at (-9,-14) {\Large $\checkmark$};
+
+% Level 8 - From p.88
+\node[page] (p93) at (-5,-12) {p.93};
+
+% Level 8 - From p.110
+\node[success] (win45) at (-1,-14) {\Large $\checkmark$};
+
+% Level 9 - From p.28
+\node[page] (p58) at (-26,-16) {p.58};
+\node[page] (p62) at (-24,-16) {p.62};
+
+% Level 9 - From p.43
+\node[failure] (x43) at (-22,-16) {\Large X};
+
+% Level 9 - From p.77
+\node[failure] (x77) at (-20,-16) {\Large X};
+
+% Level 9 - From p.104
+\node[page] (p68) at (-18,-16) {p.68};
+\node[page] (p94) at (-16,-16) {p.94};
+
+% Level 9 - From p.93
+\node[failure] (x93) at (-5,-14) {\Large X};
+
+% Level 10 - From p.58
+\node[page] (p21) at (-28,-18) {p.21};
+\node[page] (p48) at (-26,-18) {p.48};
+
+% Level 10 - From p.62
+\node[page] (p70) at (-24,-18) {p.70};
+\node[page] (p113) at (-22,-18) {p.113};
+
+% Level 10 - From p.68
+\node[failure] (x68) at (-18,-18) {\Large X};
+
+% Level 10 - From p.94
+\node[page] (p106) at (-16,-18) {p.106};
+\node[page] (p117) at (-14,-18) {p.117};
+
+% Level 11 - From p.21
+\node[success] (win21) at (-28,-20) {\Large $\checkmark$};
+
+% Level 11 - From p.48
+\node[failure] (x48) at (-26,-20) {\Large X};
+
+% Level 11 - From p.70
+\node[failure] (x70) at (-24,-20) {\Large X};
+
+% Level 11 - From p.113
+\node[success] (win113) at (-22,-20) {\Large $\checkmark$};
+
+% Level 11 - From p.106
+\node[page] (p112) at (-16,-20) {p.112};
+
+% Level 12 - From p.112
+\node[failure] (x112) at (-16,-22) {\Large X};
+
+
+% Draw all edges
+\draw[edge] (start) -- (p4); %%
+\draw[edge] (start) -- (p7); %%
+
+\draw[edge] (p4) -- (p10); %%
+\draw[edge] (p4) -- (p15); %%
+
+\draw[edge] (p7) -- (p12);
+\draw[edge] (p7) -- (p23);
+
+\draw[edge] (p10) -- (p60);
+\draw[edge] (p10) -- (p74);
+
+\draw[edge] (p15) -- (p19);
+\draw[edge] (p15) -- (p33);
+
+\draw[edge] (p12) -- (p52);
+\draw[edge] (p12) -- (p64);
+
+\draw[edge] (p23) -- (p37);
+\draw[edge] (p23) -- (p42);
+
+\draw[edge] (p60) -- (x1);
+
+\draw[edge] (p74) -- (p69);
+\draw[edge] (p74) -- (p72);
+
+\draw[edge] (p19) -- (p35);
+\draw[edge] (p19) -- (p76);
+
+\draw[edge] (p33) -- (p40);
+\draw[edge] (p33) -- (p49);
+
+\draw[edge] (p52) -- (p26);
+\draw[edge] (p52) -- (p32);
+
+\draw[edge] (p64) -- (x4);
+
+\draw[edge] (p37) -- (x37);
+
+\draw[edge] (p42) -- (p12);
+\draw[edge] (p42) to[bend left=50] (p88);
+
+\draw[edge] (p72) -- (x2);
+
+\draw[edge] (p35) -- (p55);
+\draw[edge] (p35) -- (p83);
+
+\draw[edge] (p76) -- (win33);
+
+\draw[edge] (p69) -- (p45);
+\draw[edge] (p69) -- (p97);
+
+\draw[edge] (p40) -- (miss41);
+
+\draw[edge] (p49) -- (p17);
+\draw[edge] (p49) -- (p53);
+
+\draw[edge] (p26) -- (x11);
+
+\draw[edge] (p29) -- (p81);
+\draw[edge] (p29) -- (p90);
+
+\draw[edge] (p102) -- (p96);
+\draw[edge] (p102) -- (p109);
+
+\draw[edge] (p32) -- (p29);
+\draw[edge] (p32) -- (p102);
+
+\draw[edge] (p97) -- (p86);
+\draw[edge] (p97) -- (p107);
+
+\draw[edge] (p55) -- (x40);
+
+\draw[edge] (p83) to[bend right=60] (p5);
+\draw[edge] (p83) to[bend right=56] (p14);
+
+\draw[edge] (p45) -- (p66);
+\draw[edge] (p45) -- (p101);
+
+% \draw[edge] (p57) -- (x5);
+
+% \draw[edge] (p80) -- (win2);
+
+\draw[edge] (p17) -- (p91);
+\draw[edge] (p17) -- (p100);
+
+\draw[edge] (p53) -- (x6);
+
+\draw[edge] (p86) -- (x22);
+
+\draw[edge] (p101) -- (win32);
+
+\draw[edge] (p66) -- (p5);
+\draw[edge] (p66) -- (p14);
+
+\draw[edge] (p107) -- (p85);
+\draw[edge] (p107) -- (p116);
+
+\draw[edge] (p91) -- (p88);
+\draw[edge] (p91) -- (p110);
+
+\draw[edge] (p100) -- (x45);
+
+\draw[edge] (p81) -- (x81);
+
+\draw[edge] (p90) to[bend left=60] (p14);
+\draw[edge] (p90) to[bend left=56] (p107);
+
+\draw[edge] (p96) -- (win96);
+\draw[edge] (p109) -- (x109);
+
+\draw[edge] (p85) -- (x23);
+
+\draw[edge] (p116) -- (win5);
+
+\draw[edge] (p110) -- (win45);
+
+\draw[edge] (p88) -- (p93);
+\draw[edge] (p88) -- (p83);
+
+\draw[edge] (p93) -- (x93);
+
+\draw[edge] (p5) -- (p28);
+\draw[edge] (p5) -- (p43);
+
+\draw[edge] (p14) -- (p77);
+\draw[edge] (p14) -- (p104);
+
+\draw[edge] (p43) -- (x43);
+
+\draw[edge] (p77) -- (x77);
+
+\draw[edge] (p68) -- (x68);
+
+\draw[edge] (p104) -- (p68);
+\draw[edge] (p104) -- (p94);
+
+\draw[edge] (p28) -- (p58);
+\draw[edge] (p28) -- (p62);
+
+\draw[edge] (p94) -- (p106);
+\draw[edge] (p94) -- (p117);
+
+\draw[edge] (p106) to [bend right=75] (p102);
+
+\draw[edge] (p58) -- (p21);
+\draw[edge] (p58) -- (p48);
+
+\draw[edge] (p62) -- (p70);
+\draw[edge] (p62) -- (p113);
+
+\draw[edge] (p21) -- (win21);
+
+\draw[edge] (p48) -- (x48);
+
+\draw[edge] (p70) -- (x70);
+
+\draw[edge] (p113) -- (win113);
+
+\draw[edge] (p106) -- (p112);
+\draw[edge] (p112) -- (x112);
+
+\draw[edge] (p117) to [bend right=72] (p102);
+\draw[edge] (p117) to [bend left=125] (p5);
+
+\end{tikzpicture}
+}
+
+\end{landscape}
+\end{document}
